@@ -1,18 +1,13 @@
 ---
-layout: page
 title: "Let's Encrypt"
 description: "Automatically manage your SSL certificate using Let's Encrypt."
-date: 2018-04-18 10:55
-sidebar: true
-comments: false
-sharing: true
-footer: true
-featured: false
 ---
 
-<p class='note'>
+<div class='note'>
+
 You should not use this if you are also using the [DuckDNS add-on]. The DuckDNS add-on has integrated Let's Encrypt support.
-</p>
+
+</div>
 
 Setup and manage a [Let's Encrypt](https://letsencrypt.org/) certificate. This add-on will create a certificate on the first run and will auto-renew if the certificate is within 30 days of expiration. This add-on uses port 80 to verify the certificate request. You will need to stop all other add-ons that also use this port.
 
@@ -46,7 +41,7 @@ keyfile:
   default: privkey.pem
 {% endconfiguration %}
 
-## {% linkable_title Home Assistant configuration %}
+## Home Assistant configuration
 
 Use the following configuration in Home Assistant to use the generated certificate:
 
@@ -59,7 +54,7 @@ http:
 
 If you use another port such as `8123` or an SSL proxy, change the port number.
 
-## {% linkable_title Enabling auto-renewals %}
+## Enabling auto-renewals
 
 Out of the box, the add-on will not automatically renew your certificate. In fact, it only starts, tries to get/renew your certificate, and then stops. It's up to you to manually start it again whenever your certificate comes close to expiry.
 
@@ -79,7 +74,7 @@ Use this in your `automations.yaml` to attempt certificate renewal each day at m
       addon: core_letsencrypt
 ```
 
-If you are using the [Nginx Proxy add-on] you will need need to stop this during the renewal process. This can be achieved by stopping the add-on whilst restarting the Let's Encrypt add-on. This can be achieved the following configuration: 
+If you are using the [Nginx Proxy add-on] you will need need to stop this during the renewal process. This can be achieved by stopping the add-on whilst restarting the Let's Encrypt add-on. This can be achieved the following configuration:
 
 ```yaml
 - id: letsencrypt-renewal
